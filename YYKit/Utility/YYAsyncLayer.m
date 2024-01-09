@@ -115,7 +115,8 @@ static dispatch_queue_t YYAsyncLayerGetReleaseQueue() {
         if (task.didDisplay) task.didDisplay(self, YES);
         return;
     }
-    
+   if (self.bounds.size.width <= 0 || self.bounds.size.height <= 0) return;
+
     if (async) {
         if (task.willDisplay) task.willDisplay(self);
         YYSentinel *sentinel = _sentinel;
